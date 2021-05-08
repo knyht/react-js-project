@@ -1,0 +1,15 @@
+.page {
+  background: #141414;
+}
+
+.header {
+  position: relative;
+  left: 20px;
+  color: rgb(255, 255, 255);
+}
+
+.header_to_add_task {
+  position: relative;
+  left: 40px;
+  color: rgb(255, 255, 255);
+}
