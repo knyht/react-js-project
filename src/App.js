@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import MyTodoList from './components/MyTodoList/my_todo_list'
+import React from 'react';
+import MyTodoList from './components/MyTodoList/my_todo_list';
 
-function App() {
+const App = () => {
   return (
     <div className='app'>
       <main>

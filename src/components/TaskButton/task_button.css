@@ -1,0 +1,22 @@
+.button_completed {
+  position: relative;
+  font-family: inherit;
+  padding: 20px;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background: #ffc117;
+  color: rgb(0, 0, 0);
+  padding: 8px 16px;
+  font-size: 16px;
+  top: 5px;
+}
+
+.button_completed:hover {
+  background: #ffa600;
+}
+  
+.button_completed:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #cbd6ee;
+}
