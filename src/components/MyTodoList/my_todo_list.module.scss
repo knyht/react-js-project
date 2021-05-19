@@ -1,0 +1,55 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-theme-light {
+        background: white;
+    }
+
+    &-theme-dark {
+        background: #000000;
+    }
+}
+  
+.header {
+    display: flex;
+    // position: relative;
+    left: 20px;
+
+    &-theme-light {
+        color: black;
+    }
+
+    &-theme-dark {
+        color: white;
+    }
+}
+  
+.header_to_add_task {
+    // position: relative;
+    display: flex;
+    left: 40px;
+    color: rgb(255, 255, 255);
+}
+
+.new_task {
+    display: flex;
+    flex-direction: column;
+}
+
+.radios {
+    display: flex;
+    align-self: flex-end;
+    padding: 50px 80px 0 0;
+    flex-direction: column;
+
+    &-theme-light {
+        color: black;
+    }
+
+    &-theme-dark {
+        color: white;
+    }
+}

@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   return (
+<<<<<<< Updated upstream
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -20,6 +21,14 @@ function App() {
       </header>
     </div>
   );
+=======
+    <div className='app'>
+      <main>
+        <MyTodoList />
+      </main>
+    </div>
+  )
+>>>>>>> Stashed changes
 }
 
 export default App;

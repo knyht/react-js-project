@@ -1,0 +1,31 @@
+.task_input_add {
+    display: flex;
+    flex-direction: row;
+    // position: relative;
+    left: 40px;
+    margin: 0 -5px;
+}
+
+.input {
+    display: flex;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+
+    &-theme-light {
+        border-width: 1px;
+        border-color: rgb(0, 0, 0);
+    }
+
+    &-theme-dark {
+        border-width: 1px;
+        border-color: rgba(153, 205, 50, 0);
+    }
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5px;
+}
+
