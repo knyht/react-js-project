@@ -4,7 +4,11 @@ import MyTodoList from './components/MyTodoList/my_todo_list';
 
 const App = () => {
   return (
-      <MyTodoList />
+    <div className='app'>
+      <main>
+        <MyTodoList />
+      </main>
+    </div>
   )
 }
 

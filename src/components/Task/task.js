@@ -1,17 +1,29 @@
 import TaskButton from '../TaskButton/task_button';
-import './task.css'
+import classnames from 'classnames/bind'
+import styles from './task.module.scss'
+import { ThemeContext } from '../MyTodoList/theme_context';
+// import './task.css'
 
-const Task = ({ id, name, description, completed, handleClickCompleted }) => { // Рисует одну задачу
+const cx = classnames.bind(styles)
+
+// { 'task-completed': completed }
+
+const Task = ({ id, name, description, completed, handleClickCompleted, theme }) => { // Рисует одну задачу
     name = 'Задача: ' + name
     description = 'Описание: ' + description
     completed = 'Статус: ' + completed
     return (
-      <div className='task'>
-        <div>{name}</div>
-        <div>{description}</div>
-        <div>{completed}</div>
-        <TaskButton task_id={id} task_completed={completed} handleClickCompleted={handleClickCompleted} />
-      </div>
+      <ThemeContext.Consumer>
+        {(theme) => <div className={cx('task', `task-theme-${theme}`)}>
+          <div>{name}</div>
+          <div>{description}</div>
+          <div>{completed}</div>
+          {/* <input type='checkbox' /> */}
+          <div className={cx('button')}>
+            <TaskButton task_id={id} task_completed={completed} handleClickCompleted={handleClickCompleted} />
+          </div>
+        </div>}
+      </ThemeContext.Consumer>
     )
   }
 

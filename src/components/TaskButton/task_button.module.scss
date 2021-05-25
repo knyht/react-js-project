@@ -1,0 +1,25 @@
+.button_completed {
+    display: flex;
+    // position: relative;
+    font-family: inherit;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 5px;
+    background: #ffc117;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    top: 1px;
+    width: 120px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+
+    &:hover {
+        background: #ffa600;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px #cbd6ee;
+    }
+  }

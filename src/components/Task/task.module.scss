@@ -1,0 +1,32 @@
+.task {
+    display: flex;
+    flex-direction: column;
+    // left: 20px;
+    // min-width: 100px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    // height: 110px;
+    max-width: 500px;
+
+    &-theme-light {
+        color: black;
+        background: #c9c9c97e;
+    }
+
+    &-theme-dark {
+        color: white;
+        background: #5555557e;
+    }
+
+    &-completed {
+        background: yellowgreen;
+    }
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
