@@ -1,10 +1,11 @@
 import Task from '../Task/task';
 import classnames from 'classnames/bind'
-import styles from './list.module.scss'
+import styles from './tasks_list.module.scss'
 
 const cx = classnames.bind(styles)
 
-const List = ({ tasks, handleClickCompleted }) => { // Рисует массив задач, находящихся в state
+const TasksList = ({ tasksById, handleClickCompleted }) => { // Рисует массив задач, находящихся в state
+    const tasks = Object.values(tasksById)
     return (
       <div className={cx('list_tasks')}>
         {
@@ -14,4 +15,4 @@ const List = ({ tasks, handleClickCompleted }) => { // Рисует массив
     )
   }
 
-export default List;
+export default TasksList;

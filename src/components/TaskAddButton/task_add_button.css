@@ -1,6 +1,7 @@
-.button_completed {
-  position: relative;
+.task_add_button {
+  position: absolute;
   font-family: inherit;
+  min-width: 100px;
   padding: 20px;
   appearance: none;
   border: 0;
@@ -9,14 +10,15 @@
   color: rgb(0, 0, 0);
   padding: 8px 16px;
   font-size: 16px;
-  top: 5px;
+  left: 180px;
+  bottom: 4px;
 }
-
-.button_completed:hover {
+  
+.task_add_button:hover {
   background: #ffa600;
 }
   
-.button_completed:focus {
+.task_add_button:focus {
   outline: none;
   box-shadow: 0 0 0 4px #cbd6ee;
 }
