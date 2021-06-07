@@ -1,30 +1,42 @@
-import TaskButton from '../TaskButton/task_button';
+import { TaskCompletedButton } from '../TaskCompletedButton/task_completed_button';
 import classnames from 'classnames/bind'
 import styles from './task.module.scss'
-import { ThemeContext } from '../MyTodoList/theme_context';
+// import { ThemeContext } from '../MyTodoList/theme_context';
 // import './task.css'
+import { connect } from 'react-redux'
 
 const cx = classnames.bind(styles)
 
-// { 'task-completed': completed }
+const mapStateToProps = (state) => ({
+  theme: state.theme.theme
+})
 
-const Task = ({ id, name, description, completed, handleClickCompleted, theme }) => { // Рисует одну задачу
-    name = 'Задача: ' + name
-    description = 'Описание: ' + description
-    completed = 'Статус: ' + completed
-    return (
-      <ThemeContext.Consumer>
-        {(theme) => <div className={cx('task', `task-theme-${theme}`)}>
-          <div>{name}</div>
-          <div>{description}</div>
-          <div>{completed}</div>
+const TaskComponent = ({ id, name, description, completed, theme }) => {
+  const name_full = 'Задача: ' + name
+  const description_full = 'Описание: ' + description
+  const completed_full = 'Статус: ' + completed
+  return (
+      // <ThemeContext.Consumer>
+      //   {(theme) => <div className={cx('task', `task-theme-${theme}`, { [`task-theme-${theme}-completed`]: completed })}>
+      //     <div>{name_full}</div>
+      //     <div>{description_full}</div>
+      //     <div>{completed_full}</div>
+      //     {/* <input type='checkbox' /> */}
+      //     <div className={cx('button')}>
+      //       <TaskCompletedButton task_id={id} task_completed={completed_full} handleClickCompleted={handleClickCompleted} />
+      //     </div>
+      //   </div>}
+      // </ThemeContext.Consumer>
+    <div className={cx('task', `task-theme-${theme}`, { [`task-theme-${theme}-completed`]: completed })}>
+          <div>{name_full}</div>
+          <div>{description_full}</div>
+          <div>{completed_full}</div>
           {/* <input type='checkbox' /> */}
           <div className={cx('button')}>
-            <TaskButton task_id={id} task_completed={completed} handleClickCompleted={handleClickCompleted} />
+            <TaskCompletedButton task_id={id} task_completed={completed_full} />
           </div>
-        </div>}
-      </ThemeContext.Consumer>
-    )
-  }
+    </div>
+  )
+}
 
-export default Task;
+export const Task = connect(mapStateToProps)(TaskComponent);

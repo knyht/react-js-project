@@ -1,4 +1,4 @@
-.task_input_add {
+.task_add {
     display: flex;
     flex-direction: row;
     // position: relative;
@@ -11,14 +11,13 @@
     border-radius: 5px;
     margin-bottom: 2px;
     margin-top: 2px;
+    border-width: 1px;
 
     &-theme-light {
-        border-width: 1px;
         border-color: rgb(0, 0, 0);
     }
 
     &-theme-dark {
-        border-width: 1px;
         border-color: rgba(153, 205, 50, 0);
     }
 }
