@@ -1,6 +1,3 @@
-// не понятно, почему в projectsById сохраняется поле tasks
-// начало лекции про нормализацию
-
 const normalizeState = (projects) => {
   const normalizeBy = (key) => {
     return (data, item) => {
@@ -19,11 +16,12 @@ const normalizeState = (projects) => {
   const normalizedState = {
     projectsById: normalizedProjects,
     tasksById: normalizedTasks,
-    name: '',
-    description: '',
-    project_name: '',
-    theme: DEFAULT_THEME
+    task_name: '',
+    task_description: '',
+    project_name: ''
   }
 
   return normalizedState
 }
+
+export default normalizeState;
