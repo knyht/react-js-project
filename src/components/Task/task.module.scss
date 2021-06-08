@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     // left: 20px;
-    // min-width: 100px;
+    width: 350px;
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -13,15 +13,18 @@
     &-theme-light {
         color: black;
         background: #c9c9c97e;
+        &-completed {
+            background: yellowgreen;
+        }
     }
 
     &-theme-dark {
         color: white;
         background: #5555557e;
-    }
-
-    &-completed {
-        background: yellowgreen;
+        &-completed {
+            background: yellowgreen;
+            color: black
+        }
     }
 }
 
