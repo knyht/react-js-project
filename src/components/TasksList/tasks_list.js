@@ -4,7 +4,7 @@ import styles from './tasks_list.module.scss'
 
 const cx = classnames.bind(styles)
 
-const TasksList = ({ tasksById }) => { // Рисует массив задач, находящихся в state
+const TasksList = ({ tasksById }) => {
     const tasks = Object.values(tasksById)
     return (
       <div className={cx('list_tasks')}>

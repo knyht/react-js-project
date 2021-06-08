@@ -1,8 +1,6 @@
 import { TaskAddButton } from '../TaskAddButton/task_add_button'
-// import './task_add.css'
 import classnames from 'classnames/bind'
 import styles from './task_add.module.scss'
-// import { ThemeContext } from '../MyTodoList/theme_context'
 import { connect } from 'react-redux'
 import { handleInputChange } from '../../actions/tasks_projects'
 
@@ -18,23 +16,13 @@ const mapDispatchToProps = (dispatch) => ({
   dispatchOnInputChange: (input) => dispatch(handleInputChange(input))
 })
 
-const TaskAddComponent = ({task_name, task_description, theme, dispatchOnInputChange, project_id}) => {
+const TaskAddComponent = ({ task_name, task_description, theme, dispatchOnInputChange, project_id }) => {
   const onInputChange = (event) => {
     dispatchOnInputChange(event.target)
   }
 
   return (
     <div className={cx('task_add')}>
-      {/* <ThemeContext.Consumer>
-        {(theme) => (<div className={cx('inputs')}>
-          <div>
-            <input className={cx('input', `input-theme-${theme}`)} value={name} onChange={handleChange} placeholder='Название задачи' name='name' />
-          </div>
-          <div>
-            <input className={cx('input', `input-theme-${theme}`)} value={description} onChange={handleChange} placeholder='Описание задачи' name='description' />
-          </div>
-        </div>)}
-      </ThemeContext.Consumer> */}
       <div className={cx('inputs')}>
           <div>
             <input className={cx('input', `input-theme-${theme}`)} value={task_name} onChange={onInputChange} placeholder='Название задачи' name='task_name' />

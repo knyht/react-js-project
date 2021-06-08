@@ -15,7 +15,6 @@
   
 .header {
     display: flex;
-    // position: relative;
     left: 20px;
 
     &-theme-light {
@@ -29,7 +28,6 @@
 
 .header_tasks {
     display: flex;
-    // position: relative;
     left: 20px;
     justify-content: center;
 
@@ -43,7 +41,6 @@
 }
 
 .header_to_add_task {
-    // position: relative;
     display: flex;
     left: 40px;
     color: rgb(255, 255, 255);

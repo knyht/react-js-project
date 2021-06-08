@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatchOnInputChange: (input) => dispatch(handleInputChange(input))
 })
 
-const ProjectAddComponent = ({ project_name, dispatchOnInputChange, handleClickProjectAdd }) => {
+const ProjectAddComponent = ({ project_name, dispatchOnInputChange }) => {
     const onInputChange = (event) => {
         dispatchOnInputChange(event.target)
     }

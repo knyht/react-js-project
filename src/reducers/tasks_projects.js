@@ -45,15 +45,12 @@ const initialState = {
 }
 
 export const tasks_projectsReducer = (state=initialState, action) => {
-    console.log(action.type)
     switch(action.type) {
         case INPUT_CHANGE: {
             const { value, name } = action.payload
-            const newState = {...state}
-            newState[name] = value
-            console.log(newState)
             return {
-                state: newState
+                ...state,
+                [name]: value
             }
         }
         case TASK_ADD: {
@@ -65,13 +62,13 @@ export const tasks_projectsReducer = (state=initialState, action) => {
               description: state.task_description,
               completed: false
             }
-        
             if (project_id === 'no_project') {
-                const newTasksById = {...state.tasksById}
-                newTasksById[new_id] = newTask
-        
                 return {
-                  tasksById: newTasksById
+                    ...state,
+                    tasksById: {
+                        ...state.tasksById,
+                        [new_id]: newTask
+                    }
                 }
             } else {
                 const newTasksById = {...state.tasksById}
@@ -81,8 +78,9 @@ export const tasks_projectsReducer = (state=initialState, action) => {
                 newProjectsById[project_id].tasksIds = [...newProjectsById[project_id].tasksIds, new_id]
           
                 return {
-                  tasksById: newTasksById,
-                  projectsById: newProjectsById
+                    ...state,
+                    tasksById: newTasksById,
+                    projectsById: newProjectsById
                 }
             }
         }
@@ -98,6 +96,7 @@ export const tasks_projectsReducer = (state=initialState, action) => {
             newProjectsById[new_id] = newProject
     
             return {
+                ...state,
                 projectsById: newProjectsById
             }
         }
@@ -107,6 +106,7 @@ export const tasks_projectsReducer = (state=initialState, action) => {
             newTasks[task_id] = {...newTasks[task_id], completed: true}
         
             return {
+                ...state,
                 tasksById: newTasks
             }
         }

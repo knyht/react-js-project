@@ -1,4 +1,3 @@
-// import './task_completed_button.css'
 import classnames from 'classnames/bind'
 import styles from './task_completed_button.module.scss'
 import { connect } from 'react-redux'
@@ -20,4 +19,4 @@ const TaskCompletedButtonComponent = ({ task_id, dispatchOnClickTaskCompleted })
     )
   }
 
-export const TaskCompletedButton = connect(mapDispatchToProps)(TaskCompletedButtonComponent);
+export const TaskCompletedButton = connect(null, mapDispatchToProps)(TaskCompletedButtonComponent);

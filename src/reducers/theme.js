@@ -1,7 +1,7 @@
 import { CHANGE_THEME } from '../actions/theme'
 
 const initialState = {
-    theme: 'day'
+    theme: 'light'
 }
 
 export const themeReducer = (state=initialState, action) => {

@@ -21,4 +21,4 @@ const ProjectAddButtonComponent = ({ dispatchOnClickProjectAdd }) => {
     )
 }
 
-export const ProjectAddButton = connect(mapDispatchToProps)(ProjectAddButtonComponent);
+export const ProjectAddButton = connect(null, mapDispatchToProps)(ProjectAddButtonComponent);
