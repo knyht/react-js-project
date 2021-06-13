@@ -1,49 +1,58 @@
-import { INPUT_CHANGE, TASK_ADD, PROJECT_ADD, TASK_COMPLETED } from '../actions/tasks_projects'
+import { INPUT_CHANGE, TASK_ADD, PROJECT_ADD, TASK_COMPLETED, PROJECTS_DATA } from '../actions/tasks_projects'
 import normalizeState from '../normalizeState'
 
-const projects = [
-    {
-      id: 1,
-      name: 'Вышка',
-      tasks: [
-        {
-          id: 1,
-          name: 'сделать домашку-7 по реакту',
-          description: '',
-          completed: false
-        },
-        {
-          id: 2,
-          name: 'написать курсач',
-          description: 'рекомендательная система',
-          completed: true
-        }
-      ]  
-    },
-    {
-      id: 2,
-      name: 'Все остальное',
-      tasks: [
-        {
-          id: 3,
-          name: 'забрать почту',
-          description: 'ozon',
-          completed: true
-        },
-        {
-          id: 4,
-          name: 'пробежка',
-          description: '',
-          completed: false
-        }
-      ]
-    }
-]
+// const projects = [
+//     {
+//       id: 1,
+//       name: 'Вышка',
+//       tasks: [
+//         {
+//           id: 1,
+//           name: 'сделать домашку-7 по реакту',
+//           description: '',
+//           completed: false
+//         },
+//         {
+//           id: 2,
+//           name: 'написать курсач',
+//           description: 'рекомендательная система',
+//           completed: true
+//         }
+//       ]  
+//     },
+//     {
+//       id: 2,
+//       name: 'Все остальное',
+//       tasks: [
+//         {
+//           id: 3,
+//           name: 'забрать почту',
+//           description: 'ozon',
+//           completed: true
+//         },
+//         {
+//           id: 4,
+//           name: 'пробежка',
+//           description: '',
+//           completed: false
+//         }
+//       ]
+//     }
+// ]
 
-const initialState = normalizeState(projects)
+// const initialState = normalizeState(projects)
 
-export const tasks_projectsReducer = (state=initialState, action) => {
+const initialStatte = []
+
+export const tasks_projectsReducer = (state=normalizeState(initialStatte), action) => {
     switch(action.type) {
+        case PROJECTS_DATA: {
+          console.log(state)
+          return {
+            ...state,
+            projectsById: action.payload
+          }
+        }
         case INPUT_CHANGE: {
             const { value, name } = action.payload
             return {
