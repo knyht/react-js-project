@@ -32,7 +32,7 @@ const ProjectTasksComponent = ({ tasksById, projectsById, theme }) => {
                 <div className={cx('new_task')}>
                     <TaskAdd project_id={projectId} />
                 </div>
-                <TasksList tasksById={project_tasks} />
+                <TasksList project_id={projectId} tasksById={project_tasks} />
             </div>
         )
     } else {

@@ -1,34 +1,24 @@
 const normalizeState = (projects) => {
-  const normalizeBy = (key) => {
-    return (data, item) => {
-      data[item[key]] = item
-      return data
-    }
-  }
-  
-  console.log(projects)
-  // const normalizedTasks = projects.map(project => project.tasks).flat().reduce(normalizeBy('id'), {})
-  console.log(projects.map(project => {
-    const keys = Object.keys(project)
-  
-    for (let k of keys) {
-      console.log(k, project[k])
-    }
-    return project.tasks
-  }))
-  
   const normalizedTasks = projects.map(project => project.tasks).flat().reduce((tasks, project_task) => {
     const { id } = project_task
-    tasks[id] = {...project_task}
+    tasks[id] = {
+      id: project_task.id,
+      name: project_task.name,
+      description: project_task.description,
+      completed: project_task.completed
+    }
     return tasks
   }, {})
-  console.log(normalizedTasks)
 
   const normalizedProjects = projects.map(project => ({
-    ...project,
+    id: project.id,
+    name: project.name,
     tasksIds: project.tasks.map(task => task.id)
-  })).reduce(normalizeBy('id'), {})
-  console.log(normalizedProjects)
+  })).reduce((projects, project) => {
+    const { id } = project
+    projects[id] = {...project}
+    return projects
+  }, {})
 
   const normalizedState = {
     projectsById: normalizedProjects,
@@ -36,9 +26,7 @@ const normalizeState = (projects) => {
     task_name: '',
     task_description: '',
     project_name: '',
-    test: []
   }
-
   return normalizedState
 }
 

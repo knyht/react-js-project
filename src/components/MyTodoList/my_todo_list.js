@@ -9,12 +9,11 @@ import classnames from 'classnames/bind'
 import styles from './my_todo_list.module.scss'
 import { connect } from 'react-redux'
 import { handleThemeChange } from '../../actions/theme'
-import { fetchLoadProjects } from '../../actions/tasks_projects'
+import { fetchStateLoad } from '../../actions/tasks_projects'
 
 const cx = classnames.bind(styles)
 
 const mapStateToProps = (state) => ({
-  projects_test: state.tasks_projects.test,
   tasksById: state.tasks_projects.tasksById,
   projectsById: state.tasks_projects.projectsById,
   theme: state.theme.theme
@@ -22,12 +21,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchOnThemeChange: (theme) => dispatch(handleThemeChange(theme)),
-  dispatchFetchLoadProjects: (projects) => dispatch(fetchLoadProjects(projects))
+  dispatchFetchStateLoad: (projects) => dispatch(fetchStateLoad(projects))
 })
 
 class MyTodoListComponent extends React.Component {
   componentDidMount() {
-    this.props.dispatchFetchLoadProjects()
+    this.props.dispatchFetchStateLoad()
   }
 
   onThemeChange = (event) => {
@@ -80,7 +79,7 @@ class MyTodoListComponent extends React.Component {
                 <div className={cx('new_task')}>
                   <TaskAdd project_id={'no_project'} />
                 </div>
-                <TasksList tasksById={this.props.tasksById} />
+                <TasksList project_id={'no_projects'} tasksById={this.props.tasksById} />
               </div>
             </Route>
             <Route path='/projects/:projectId/'>
