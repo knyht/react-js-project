@@ -20,17 +20,18 @@ export const fetchStateLoad = () => (dispatch) => {
 export const fetchClickProjectAddUpload = () => (dispatch, getState) => {
     const get_state = getState()
     const project_name = get_state.tasks_projects.project_name
-    uploadProject(project_name)
-    // uploadProject(project_name).then(() => {
-    //     loadState()
-    // })
+    uploadProject(project_name).then(() => {
+        dispatch(fetchStateLoad())
+    })
 }
 
 export const fetchClickTaskAddUpload = (project_id) => (dispatch, getState) => {
     const get_state = getState()
     const task_name = get_state.tasks_projects.task_name
     const task_description = get_state.tasks_projects.task_description
-    uploadTask(project_id, task_name, task_description)
+    uploadTask(project_id, task_name, task_description).then(() => {
+        dispatch(fetchStateLoad())
+    })
 }
 
 export const fetchClickTaskCompletedUpload = (completed) => (dispatch, getState) => {
@@ -39,5 +40,7 @@ export const fetchClickTaskCompletedUpload = (completed) => (dispatch, getState)
     const task_id = completed.dataset.taskId
     const task_name = get_state.tasks_projects.tasksById[task_id].name
     const task_description = get_state.tasks_projects.tasksById[task_id].description
-    uploadCompletedStatusTask(project_id, task_id, task_name, task_description)
+    uploadCompletedStatusTask(project_id, task_id, task_name, task_description).then(() => {
+        dispatch(fetchStateLoad())
+    })
 }
