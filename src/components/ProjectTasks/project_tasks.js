@@ -28,7 +28,6 @@ const ProjectTasksComponent = ({ tasksById, projectsById, theme }) => {
 
         return (
             <div className={cx('tasks')}>
-                {/* <h1 className={cx('header', `header-theme-${theme}`)}>{project_name}</h1> */}
                 <h1 className={cx('header', `header-theme-${theme}`)}>{project_name}</h1>
                 <div className={cx('new_task')}>
                     <TaskAdd project_id={projectId} />
