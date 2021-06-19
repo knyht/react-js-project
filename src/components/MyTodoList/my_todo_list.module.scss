@@ -23,10 +23,25 @@
     }
 
     &-theme-dark {
-        color: white;
+        color: rgb(255, 255, 255);
     }
 }
-  
+
+.header_tasks {
+    display: flex;
+    // position: relative;
+    left: 20px;
+    justify-content: center;
+
+    &-theme-light {
+        color: black;
+    }
+
+    &-theme-dark {
+        color: rgb(255, 255, 255);
+    }
+}
+
 .header_to_add_task {
     // position: relative;
     display: flex;
@@ -52,4 +67,18 @@
     &-theme-dark {
         color: white;
     }
+}
+
+.projects_and_tasks {
+    display: flex;
+    flex-direction: row;
+    margin: 0 -50px;
+}
+
+.projects {
+    margin: 0 50px;
+}
+
+.tasks {
+    margin: 0 50px;
 }

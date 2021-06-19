@@ -1,4 +1,4 @@
-import TaskButton from '../TaskButton/task_button';
+import TaskCompletedButton from '../TaskCompletedButton/task_completed_button';
 import classnames from 'classnames/bind'
 import styles from './task.module.scss'
 import { ThemeContext } from '../MyTodoList/theme_context';
@@ -6,21 +6,19 @@ import { ThemeContext } from '../MyTodoList/theme_context';
 
 const cx = classnames.bind(styles)
 
-// { 'task-completed': completed }
-
 const Task = ({ id, name, description, completed, handleClickCompleted, theme }) => { // Рисует одну задачу
-    name = 'Задача: ' + name
-    description = 'Описание: ' + description
-    completed = 'Статус: ' + completed
+    const name_full = 'Задача: ' + name
+    const description_full = 'Описание: ' + description
+    const completed_full = 'Статус: ' + completed
     return (
       <ThemeContext.Consumer>
-        {(theme) => <div className={cx('task', `task-theme-${theme}`)}>
-          <div>{name}</div>
-          <div>{description}</div>
-          <div>{completed}</div>
+        {(theme) => <div className={cx('task', `task-theme-${theme}`, { [`task-theme-${theme}-completed`]: completed })}>
+          <div>{name_full}</div>
+          <div>{description_full}</div>
+          <div>{completed_full}</div>
           {/* <input type='checkbox' /> */}
           <div className={cx('button')}>
-            <TaskButton task_id={id} task_completed={completed} handleClickCompleted={handleClickCompleted} />
+            <TaskCompletedButton task_id={id} task_completed={completed_full} handleClickCompleted={handleClickCompleted} />
           </div>
         </div>}
       </ThemeContext.Consumer>

@@ -1,0 +1,20 @@
+.project_add {
+    display: flex;
+    flex-direction: row;
+    margin: 0 -5px;
+}
+
+.input {
+    display: flex;
+    border-radius: 5px;
+    border-width: 1px;
+    margin: 3px 5px;
+
+    &-theme-light {
+        border-color: rgb(255, 0, 255);
+    }
+
+    &-theme-dark {
+        border-color: rgba(153, 205, 50, 0);
+    }
+}

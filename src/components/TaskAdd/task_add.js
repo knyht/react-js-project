@@ -1,14 +1,14 @@
-import AddButton from '../AddButton/add_button'
-// import './task_input.css'
+import TaskAddButton from '../TaskAddButton/task_add_button'
+// import './task_add.css'
 import classnames from 'classnames/bind'
-import styles from './task_input.module.scss'
+import styles from './task_add.module.scss'
 import { ThemeContext } from '../MyTodoList/theme_context'
 
 const cx = classnames.bind(styles)
 
-const TaskInput = ( {name, description, handleChange, handleClickAdd} ) => { // Инпуты для добавления новой задачи
+const TaskAdd = ( {name, description, handleChange, handleClickAdd, project_id} ) => { // Добавление новой задачи
     return (
-      <div className={cx('task_input_add')}>
+      <div className={cx('task_add')}>
         <ThemeContext.Consumer>
           {(theme) => (<div className={cx('inputs')}>
             <div>
@@ -19,9 +19,9 @@ const TaskInput = ( {name, description, handleChange, handleClickAdd} ) => { // 
             </div>
           </div>)}
         </ThemeContext.Consumer>
-          <AddButton handleClickAdd={handleClickAdd}/>
+          <TaskAddButton handleClickAdd={handleClickAdd} project_id={project_id} />
       </div>
     )
   }
 
-  export default TaskInput;
+  export default TaskAdd;
