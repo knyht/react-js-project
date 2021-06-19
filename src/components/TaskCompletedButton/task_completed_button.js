@@ -1,22 +1,22 @@
 import classnames from 'classnames/bind'
 import styles from './task_completed_button.module.scss'
 import { connect } from 'react-redux'
-import { handleClickTaskCompleted } from '../../actions/tasks_projects'
+import { fetchClickTaskCompletedUpload } from '../../actions/tasks_projects'
 
 const cx = classnames.bind(styles)
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchOnClickTaskCompleted: (task_id) => dispatch(handleClickTaskCompleted(task_id))
+  dispatchOnFetchClickTaskCompletedUpload: (completed) => dispatch(fetchClickTaskCompletedUpload(completed))
 })
 
-const TaskCompletedButtonComponent = ({ task_id, dispatchOnClickTaskCompleted }) => {
-  const onClickTaskCompleted = (event) => {
-    dispatchOnClickTaskCompleted(event.target.value)
+const TaskCompletedButtonComponent = ({ project_id, task_id, dispatchOnFetchClickTaskCompletedUpload }) => {
+  const onFetchClickTaskCompletedUpload = (event) => {
+    dispatchOnFetchClickTaskCompletedUpload(event.target)
   }
 
-    return (
-      <button value={task_id} className={cx('task_completed_button',)} onClick={onClickTaskCompleted}>Выполнена</button>
-    )
-  }
+  return (
+    <button data-project-id={project_id} data-task-id={task_id} className={cx('task_completed_button')} onClick={onFetchClickTaskCompletedUpload}>Выполнена</button>
+  )
+}
 
 export const TaskCompletedButton = connect(null, mapDispatchToProps)(TaskCompletedButtonComponent);

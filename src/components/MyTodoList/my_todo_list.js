@@ -9,6 +9,7 @@ import classnames from 'classnames/bind'
 import styles from './my_todo_list.module.scss'
 import { connect } from 'react-redux'
 import { handleThemeChange } from '../../actions/theme'
+import { fetchStateLoad } from '../../actions/tasks_projects'
 
 const cx = classnames.bind(styles)
 
@@ -19,38 +20,43 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchOnThemeChange: (theme) => dispatch(handleThemeChange(theme))
+  dispatchOnThemeChange: (theme) => dispatch(handleThemeChange(theme)),
+  dispatchFetchStateLoad: (projects) => dispatch(fetchStateLoad(projects))
 })
 
-const MyTodoListComponent = ({ tasksById, projectsById, theme, dispatchOnThemeChange }) => {
-  const onThemeChange = (event) => {
-    dispatchOnThemeChange(event.target.value)
+class MyTodoListComponent extends React.Component {
+  componentDidMount() {
+    this.props.dispatchFetchStateLoad()
   }
 
-  return (
-    <BrowserRouter>
-      <div className={cx('page', `page-theme-${theme}`)}>
-        <div className={cx('radios', `radios-theme-${theme}`)}>
+  onThemeChange = (event) => {
+    this.props.dispatchOnThemeChange(event.target.value)
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+      <div className={cx('page', `page-theme-${this.props.theme}`)}>
+        <div className={cx('radios', `radios-theme-${this.props.theme}`)}>
           <div>
             <input
               type='radio'
               name='theme'
               id='light'
               value='light'
-              checked={theme === 'light'}
-              onChange={onThemeChange}
+              checked={this.props.theme === 'light'}
+              onChange={this.onThemeChange}
             />
             <label htmlFor='light'>Светлая</label>
           </div>
-
           <div>
           <input
               type='radio'
               name='theme'
               id='dark'
               value='dark'
-              checked={theme === 'dark'}
-              onChange={onThemeChange}
+              checked={this.props.theme === 'dark'}
+              onChange={this.onThemeChange}
             />
             <label htmlFor='light'>Темная</label>
           </div>
@@ -59,21 +65,21 @@ const MyTodoListComponent = ({ tasksById, projectsById, theme, dispatchOnThemeCh
           <Route path='/'>
             <div className={cx('projects')}>
               <h1>
-                <Link className={cx('header', `header-theme-${theme}`)} to='/'>Все задачи</Link>
+                <Link className={cx('header', `header-theme-${this.props.theme}`)} to='/'>Все задачи</Link>
               </h1>
-              <h1 className={cx('header', `header-theme-${theme}`)}>Список проектов</h1>
-              <ProjectsList projectsById={projectsById} />
+              <h1 className={cx('header', `header-theme-${this.props.theme}`)}>Список проектов</h1>
+              <ProjectsList projectsById={this.props.projectsById} />
               <ProjectAdd />
             </div>
           </Route>
           <Switch>
             <Route exact path='/'>
               <div className={cx('tasks')}>
-                <h1 className={cx('header_tasks', `header_tasks-theme-${theme}`)}>Все задачи</h1>
+                <h1 className={cx('header_tasks', `header_tasks-theme-${this.props.theme}`)}>Все задачи</h1>
                 <div className={cx('new_task')}>
                   <TaskAdd project_id={'no_project'} />
                 </div>
-                <TasksList tasksById={tasksById} />
+                <TasksList project_id={'no_projects'} tasksById={this.props.tasksById} />
               </div>
             </Route>
             <Route path='/projects/:projectId/'>
@@ -84,7 +90,8 @@ const MyTodoListComponent = ({ tasksById, projectsById, theme, dispatchOnThemeCh
         </div>
       </div>
     </BrowserRouter>
-  )
+    )
+  }
 }
 
 export const MyTodoList = connect(mapStateToProps, mapDispatchToProps)(MyTodoListComponent);

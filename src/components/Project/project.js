@@ -11,9 +11,10 @@ const mapStateToProps = (state) => ({
 
 const ProjectComponent = ({ theme, id, name }) => {
     const project_path = `/projects/${id}/`
+    const project_row = `- ${name}`
     return (
         <div>
-            <Link className={cx('header', `header-theme-${theme}`)} to={project_path}>{name}</Link>
+            <Link className={cx('header', `header-theme-${theme}`)} to={project_path} style={{ textDecoration: 'none' }}>{project_row}</Link>
         </div>
     )
 }

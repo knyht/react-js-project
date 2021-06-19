@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
   theme: state.theme.theme
 })
 
-const TaskComponent = ({ id, name, description, completed, theme }) => {
+const TaskComponent = ({ project_id, id, name, description, completed, theme }) => {
   const name_full = 'Задача: ' + name
   const description_full = 'Описание: ' + description
   const completed_full = 'Статус: ' + completed
@@ -19,7 +19,7 @@ const TaskComponent = ({ id, name, description, completed, theme }) => {
           <div>{description_full}</div>
           <div>{completed_full}</div>
           <div className={cx('button')}>
-            <TaskCompletedButton task_id={id} task_completed={completed_full} />
+            <TaskCompletedButton project_id={project_id} task_id={id} task_completed={completed_full} />
           </div>
     </div>
   )
